@@ -2,6 +2,7 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WpfPlayground.ViewModel;
 
 namespace WpfPlayground
 {
@@ -15,7 +16,11 @@ namespace WpfPlayground
         public App()
         {
             _host = new HostBuilder()
-                .ConfigureServices((context, services) => services.AddSingleton<MainWindow>())
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSingleton<MainWindow>();
+                    services.AddSingleton<MainWindowViewModel>();
+                })
                 .Build();
         }
 
