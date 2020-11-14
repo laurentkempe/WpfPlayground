@@ -6,8 +6,18 @@
         xmlns:viewModel="clr-namespace:WpfPlayground.ViewModel"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title, Mode=OneTime}"
+        Title="{Binding Title, Mode=TwoWay}"
         Height="450"
         Width="800">
-    <Grid />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox Name="TextBox"></TextBox>
+        <Button Grid.Row="1"
+                Content="Update Title"
+                Command="{Binding UpdateTitleCommand}"
+                CommandParameter="{Binding ElementName=TextBox, Path=Text}"/>
+    </Grid>
 </Window>
