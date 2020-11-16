@@ -44,8 +44,6 @@ namespace WpfPlayground
             }
 
             base.OnExit(e);
-
-            await _host.StopAsync();
         }
     }
 }
