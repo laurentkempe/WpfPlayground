@@ -1,7 +1,9 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using WpfPlayground.ViewModel;
 
 namespace WpfPlayground
@@ -18,8 +20,10 @@ namespace WpfPlayground
             _host = new HostBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddSingleton<MainWindow>();
+                    services.AddSingleton<IMessenger, StrongReferenceMessenger>();
                     services.AddSingleton<MainWindowViewModel>();
+                    services.AddSingleton<FooterViewModel>();
+                    services.AddSingleton<MainWindow>();
                 })
                 .Build();
         }

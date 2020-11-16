@@ -5,13 +5,17 @@ namespace WpfPlayground
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    internal sealed partial class MainWindow
     {
-        public MainWindow(MainWindowViewModel mainWindowViewModel)
-        {
-            InitializeComponent();
+        public MainWindowViewModel MainWindowViewModel { get; }
+        public FooterViewModel FooterViewModel { get; }
 
-            DataContext = mainWindowViewModel;
+        public MainWindow(MainWindowViewModel mainWindowViewModel, FooterViewModel footerViewModel)
+        {
+            MainWindowViewModel = mainWindowViewModel;
+            FooterViewModel = footerViewModel;
+
+            InitializeComponent();
         }
     }
 }
