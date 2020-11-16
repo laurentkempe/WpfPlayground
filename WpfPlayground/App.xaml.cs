@@ -38,6 +38,11 @@ namespace WpfPlayground
 
         protected override async void OnExit(ExitEventArgs e)
         {
+            using (_host)
+            {
+                await _host.StopAsync();
+            }
+
             base.OnExit(e);
 
             await _host.StopAsync();
