@@ -13,8 +13,12 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
+        <TextBox Grid.Row="0"
+                 DataContext="{Binding HeaderViewModel}"
+                 Text="{Binding Title, Mode=TwoWay}"/>
+        <Grid Grid.Row="1"
               DataContext="{Binding MainWindowViewModel}">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -33,7 +37,7 @@
                          Minimum="0"
                          Maximum="100" />
         </Grid>
-        <TextBox Grid.Row="1"
+        <TextBox Grid.Row="2"
                    DataContext="{Binding FooterViewModel}"
                    Text="{Binding Title, Mode=TwoWay}"/>
     </Grid>

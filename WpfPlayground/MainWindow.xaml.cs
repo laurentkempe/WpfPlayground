@@ -8,11 +8,13 @@ namespace WpfPlayground
     internal sealed partial class MainWindow
     {
         public MainWindowViewModel MainWindowViewModel { get; }
+        public HeaderViewModel HeaderViewModel { get; }
         public FooterViewModel FooterViewModel { get; }
 
-        public MainWindow(MainWindowViewModel mainWindowViewModel, FooterViewModel footerViewModel)
+        public MainWindow(MainWindowViewModel mainWindowViewModel, HeaderViewModel headerViewModel, FooterViewModel footerViewModel)
         {
             MainWindowViewModel = mainWindowViewModel;
+            HeaderViewModel = headerViewModel;
             FooterViewModel = footerViewModel;
 
             InitializeComponent();

@@ -22,6 +22,7 @@ namespace WpfPlayground
                 {
                     services.AddSingleton<IMessenger, StrongReferenceMessenger>();
                     services.AddSingleton<MainWindowViewModel>();
+                    services.AddSingleton<HeaderViewModel>();
                     services.AddSingleton<FooterViewModel>();
                     services.AddSingleton<MainWindow>();
                 })
