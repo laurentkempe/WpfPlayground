@@ -48,7 +48,7 @@ class Build : NukeBuild
         });
 
     Target Restore => _ => _
-        .Produces(RootDirectory / "WpfPlayground" / "obj" )
+        .Produces(RootDirectory / "WpfPlayground" / "obj" / "**/*" )
         .Executes(() =>
         {
             DotNetRestore(s => s
