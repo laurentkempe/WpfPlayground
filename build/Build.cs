@@ -64,7 +64,7 @@ class Build : NukeBuild
 
     Target Pack => _ => _
         .DependsOn(Compile)
-        .Produces(OutputDirectory / "*.*")
+        .Produces(OutputDirectory / "*.exe")
         .Executes(() =>
         {
             DotNetPublish(s => s
