@@ -17,6 +17,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [TeamCity(
     TeamCityAgentPlatform.Windows,
+    Version = "2020.2",
     VcsTriggeredTargets = new[] { nameof(Pack) })]
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
