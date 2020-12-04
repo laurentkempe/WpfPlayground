@@ -60,6 +60,14 @@ class Build : NukeBuild
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
                 .EnableNoRestore());
+
+            DotNetPublish(s => s
+                .SetConfiguration(Configuration)
+                .SetProject(Solution)
+                .SetRuntime("win-x64")
+                .SetSelfContained(false)
+                .AddProperty("PublishSingleFile", "true")
+            );
         });
 
 }
