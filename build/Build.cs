@@ -58,6 +58,8 @@ class Build : NukeBuild
     Target Compile => _ => _
         .DependsOn(Restore)
         .Consumes(Restore)
+        .Produces(RootDirectory / "WpfPlayground" / "obj" / "**/*" )
+        .Produces(RootDirectory / "WpfPlayground" / "bin" / "**/*" )
         .Executes(() =>
         {
             DotNetBuild(s => s
@@ -68,6 +70,7 @@ class Build : NukeBuild
 
     Target Pack => _ => _
         .DependsOn(Compile)
+        .Consumes(Compile)
         .Produces(OutputDirectory / "*.exe")
         .Executes(() =>
         {
@@ -77,6 +80,7 @@ class Build : NukeBuild
                 .SetRuntime("win-x64")
                 .SetSelfContained(false)
                 .SetOutput(OutputDirectory)
+                .EnableNoBuild()
                 .AddProperty("PublishSingleFile", "true")
             );
         });

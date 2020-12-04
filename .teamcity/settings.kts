@@ -70,6 +70,10 @@ object Compile : BuildType({
         root(DslContext.settingsRoot)
         cleanCheckout = true
     }
+    artifactRules = """
+        WpfPlayground/obj/**/* => WpfPlayground/obj
+        WpfPlayground/bin/**/* => WpfPlayground/bin
+    """.trimIndent()
     steps {
         exec {
             path = "build.cmd"
@@ -108,6 +112,12 @@ object Pack : BuildType({
         snapshot(Compile) {
             onDependencyFailure = FailureAction.FAIL_TO_START
             onDependencyCancel = FailureAction.CANCEL
+        }
+        artifacts(Compile) {
+            artifactRules = """
+                WpfPlayground/obj/**/* => WpfPlayground/obj
+                WpfPlayground/bin/**/* => WpfPlayground/bin
+            """.trimIndent()
         }
     }
 })
