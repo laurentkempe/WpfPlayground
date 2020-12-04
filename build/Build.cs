@@ -17,7 +17,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [TeamCity(
     TeamCityAgentPlatform.Windows,
-    VcsTriggeredTargets = new[] { nameof(Compile) })]
+    VcsTriggeredTargets = new[] { nameof(Pack) })]
 [CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild
@@ -60,12 +60,19 @@ class Build : NukeBuild
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
                 .EnableNoRestore());
+        });
 
+    Target Pack => _ => _
+        .DependsOn(Compile)
+        .Produces(OutputDirectory / "*.*")
+        .Executes(() =>
+        {
             DotNetPublish(s => s
                 .SetConfiguration(Configuration)
                 .SetProject(Solution)
                 .SetRuntime("win-x64")
                 .SetSelfContained(false)
+                .SetOutput(OutputDirectory)
                 .AddProperty("PublishSingleFile", "true")
             );
         });
