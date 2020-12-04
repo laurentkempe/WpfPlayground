@@ -56,6 +56,7 @@ object Restore : BuildType({
         root(DslContext.settingsRoot)
         cleanCheckout = true
     }
+    artifactRules = "WpfPlayground/obj => WpfPlayground"
     steps {
         exec {
             path = "build.cmd"
@@ -79,6 +80,9 @@ object Compile : BuildType({
         snapshot(Restore) {
             onDependencyFailure = FailureAction.FAIL_TO_START
             onDependencyCancel = FailureAction.CANCEL
+        }
+        artifacts(Restore) {
+            artifactRules = "WpfPlayground/obj => WpfPlayground"
         }
     }
 })
