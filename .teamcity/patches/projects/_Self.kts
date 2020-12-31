@@ -19,7 +19,6 @@ changeProject(DslContext.projectId) {
                 param("secure:clientSecret", "credentialsJSON:e6ba943c-0576-477d-bf5d-d5ed05a5e3af")
                 param("profileServerUrl", "")
                 param("system.cloud.profile_id", "arm-1")
-                param("agent_pool_id", "-2")
                 param("total-work-time", "15")
                 param("credentialsType", "service")
                 param("description", "")
