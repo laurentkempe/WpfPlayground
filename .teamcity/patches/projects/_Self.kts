@@ -16,7 +16,7 @@ changeProject(DslContext.projectId) {
                 type = "CloudImage"
                 id = "PROJECT_EXT_3"
                 param("spotVm", "false")
-                param("imageId", "jetbrains/teamcity-agent")
+                param("imageId", "jetbrains/teamcity-agent:latest-windowsservercore")
                 param("memory", "4")
                 param("spotPrice", "1")
                 param("numberCores", "2")
@@ -46,6 +46,7 @@ changeProject(DslContext.projectId) {
                 param("clientId", "0c2be730-4705-41b9-8c15-0ce5959b7152")
                 param("secure:clientSecret", "credentialsJSON:7d53fca1-dce1-4a0d-8ccc-3a065fd83b19")
                 param("profileServerUrl", "")
+                param("system.cloud.profile_id", "arm-2")
                 param("total-work-time", "10")
                 param("credentialsType", "service")
                 param("description", "")
